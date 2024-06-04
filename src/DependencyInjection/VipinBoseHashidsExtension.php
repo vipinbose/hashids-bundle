@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Roukmoute\HashidsBundle\DependencyInjection;
+namespace VipinBose\HashidsBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader;
 
-class RoukmouteHashidsExtension extends Extension
+class VipinBoseHashidsExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container): void
     {

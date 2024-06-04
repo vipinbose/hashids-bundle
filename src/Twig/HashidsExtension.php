@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Roukmoute\HashidsBundle\Twig;
+namespace VipinBose\HashidsBundle\Twig;
 
 use Hashids\HashidsInterface;
 use Twig\Extension\AbstractExtension;

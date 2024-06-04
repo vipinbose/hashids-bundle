@@ -1,31 +1,32 @@
 {
-  "name": "roukmoute/hashids-bundle",
+  "name": "vipinbose/hashids-bundle",
   "type": "symfony-bundle",
   "description": "Integrates hashids/hashids in a Symfony project",
   "minimum-stability": "stable",
   "license": "MIT",
   "authors": [
     {
-      "name": "Mathias STRASSER",
-      "email": "contact@roukmoute.fr"
+      "name": "Vipin Bose",
+      "email": "vipin.bose@gmail.com"
     }
   ],
   "autoload": {
     "psr-4": {
-      "Roukmoute\\HashidsBundle\\": "src/"
+      "VipinBose\\HashidsBundle\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "spec\\Roukmoute\\HashidsBundle\\": "spec/"
+      "spec\\VipinBose\\HashidsBundle\\": "spec/"
     }
   },
   "require": {
-    "php": "^7.4 || ^8.0",
+    "php": "^8.0",
+    "doctrine/orm": "^3.2",
     "hashids/hashids": "^4.1",
-    "sensio/framework-extra-bundle": "^5.1 || ^6.0",
-    "symfony/http-kernel": "^4.4 || ^5.3 || ^6.0",
-    "symfony/http-foundation": "^4.4 || ^5.3 || ^6.0"
+    "symfony/doctrine-bridge": "^6.4",
+    "symfony/http-foundation": "^6.0",
+    "symfony/http-kernel": "^6.0"
   },
   "require-dev": {
     "friends-of-phpspec/phpspec-expect": "^4.0",

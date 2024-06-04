@@ -1,4 +1,0 @@
-suites:
-    suite:
-        namespace: Roukmoute\HashidsBundle
-        psr4_prefix: Roukmoute\HashidsBundle

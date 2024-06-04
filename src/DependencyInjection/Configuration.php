@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Roukmoute\HashidsBundle\DependencyInjection;
+namespace VipinBose\HashidsBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\NodeParentInterface;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
@@ -12,7 +12,7 @@ class Configuration implements ConfigurationInterface
 {
     public function getConfigTreeBuilder(): NodeParentInterface
     {
-        $treeBuilder = new TreeBuilder('roukmoute_hashids');
+        $treeBuilder = new TreeBuilder('vipinbose_hashids');
         $rootNode = $treeBuilder->getRootNode();
 
         $rootNode
