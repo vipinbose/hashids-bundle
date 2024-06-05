@@ -20,7 +20,7 @@ class VipinBoseHashidsExtension extends Extension
         $loader->load('services.php');
 
         foreach (['salt', 'min_hash_length', 'alphabet', 'passthrough', 'auto_convert'] as $parameter) {
-            $container->setParameter('hashids.' . $parameter, $config[$parameter]);
+            $container->setParameter('vipinbose_hashids.hashids.' . $parameter, $config[$parameter]);
         }
     }
 }

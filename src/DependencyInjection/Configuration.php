@@ -11,7 +11,7 @@ class Configuration implements ConfigurationInterface
 {
     public function getConfigTreeBuilder(): TreeBuilder
     {
-        $treeBuilder = new TreeBuilder('vipin_bose_hashids');
+        $treeBuilder = new TreeBuilder('vipinbose_hashids');
         $rootNode = $treeBuilder->getRootNode();
 
         $rootNode
