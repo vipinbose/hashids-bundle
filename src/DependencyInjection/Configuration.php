@@ -9,9 +9,12 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 class Configuration implements ConfigurationInterface
 {
+
+    public const string ALIAS = 'vipinbose_hashids';
+
     public function getConfigTreeBuilder(): TreeBuilder
     {
-        $treeBuilder = new TreeBuilder('vipinbose_hashids');
+        $treeBuilder = new TreeBuilder(self::ALIAS);
         $rootNode = $treeBuilder->getRootNode();
 
         $rootNode

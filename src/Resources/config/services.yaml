@@ -1,0 +1,23 @@
+services:
+  _defaults:
+    autowire: true
+    public: true
+
+  VipinBose\HashidsBundle\Service\HashidsService:
+    arguments:
+      - '%danilovl.hashids.salt%'
+      - '%danilovl.hashids.min_hash_length%'
+      - '%danilovl.hashids.alphabet%'
+
+  VipinBose\HashidsBundle\Interfaces\HashidsServiceInterface: '@VipinBose\HashidsBundle\Service\HashidsService'
+
+  VipinBose\HashidsBundle\ValueResolver\HashIdValueResolver:
+    arguments:
+      $enable: '%danilovl.hashids.enable_value_resolver%'
+    tags:
+      - { name: controller.argument_value_resolver, priority: 222 }
+
+  VipinBose\HashidsBundle\EventListener\KernelListener:
+    autoconfigure: true
+    arguments:
+      $enable: '%danilovl.hashids.enable_value_resolver%'

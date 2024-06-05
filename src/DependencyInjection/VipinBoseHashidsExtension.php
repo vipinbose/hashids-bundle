@@ -7,20 +7,39 @@ namespace VipinBose\HashidsBundle\DependencyInjection;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
-use Symfony\Component\DependencyInjection\Loader;
+use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
+use Symfony\Component\Yaml\Yaml;
 
 class VipinBoseHashidsExtension extends Extension
 {
+    private const string DIR_CONFIG = '/../Resources/config';
+    private const string DIR_CONFIG_PARAM = self::DIR_CONFIG . '/parameters.yaml';
+
     public function load(array $configs, ContainerBuilder $container): void
     {
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
-        $loader = new Loader\PhpFileLoader($container, new FileLocator(dirname(__DIR__, 2) . '/Resources/config'));
-        $loader->load('services.php');
+        $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . self::DIR_CONFIG));
+        $loader->load('services.yaml');
+        $loader->load('twig.yaml');
 
-        foreach (['salt', 'min_hash_length', 'alphabet', 'passthrough', 'auto_convert'] as $parameter) {
-            $container->setParameter('vipinbose_hashids.hashids.' . $parameter, $config[$parameter]);
+        $this->createParameters($container, $config);
+    }
+
+    private function createParameters(ContainerBuilder $container, array $config): void
+    {
+        /** @var array $yamlParameter */
+        $yamlParameter =  Yaml::parseFile(__DIR__ . self::DIR_CONFIG_PARAM);
+        $parameters = $yamlParameter['hashids']['parameters'] ?? [];
+
+        foreach ($parameters as $parameter) {
+            $container->setParameter("vipinbose.hashids.{$parameter}", $config[$parameter]);
         }
+    }
+
+    public function getAlias(): string
+    {
+        return Configuration::ALIAS;
     }
 }

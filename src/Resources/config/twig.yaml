@@ -1,0 +1,6 @@
+services:
+  VipinBose\HashidsBundle\Twig\HashidsExtension:
+    public: false
+    autowire: true
+    tags:
+      - { name: twig.extension }
