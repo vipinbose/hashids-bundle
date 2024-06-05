@@ -1,7 +1,3 @@
-[![SymfonyInsight](https://insight.symfony.com/projects/be961d5c-da56-44b1-a094-e27066802a2d/mini.svg)](https://insight.symfony.com/projects/be961d5c-da56-44b1-a094-e27066802a2d)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/roukmoute/hashids-bundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/roukmoute/hashids-bundle/?branch=master)
-![Packagist Downloads](https://img.shields.io/packagist/dt/roukmoute/hashids-bundle)
-
 # HashidsBundle
 
 Integrates [hashids/hashids](https://github.com/ivanakimov/hashids.php) in a Symfony project.
@@ -33,16 +29,16 @@ following line in the `config/bundles.php` file of your project:
 
 return [
     …,
-    Roukmoute\HashidsBundle\RoukmouteHashidsBundle::class => ['all' => true],
+    VipinBose\HashidsBundle\VipinBoseHashidsBundle::class => ['all' => true],
 ];
 ```
 
 ## Configuration
 
-The configuration (`config/packages/roukmoute_hashids.yaml`) looks as follows :
+The configuration (`config/packages/vipin_bose_hashids.yaml`) looks as follows :
 
 ```yaml
-roukmoute_hashids:
+vipin_bose_hashids:
 
     # if set, the hashids will differ from everyone else's
     salt:            ""
