@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace VipinBose\HashidsBundle\EventListener;
+namespace Vipinbose\HashidsBundle\EventListener;
 
-use VipinBose\HashidsBundle\Attribute\HashidsRequestConverterAttribute;
-use VipinBose\HashidsBundle\Interfaces\HashidsServiceInterface;
+use Vipinbose\HashidsBundle\Attribute\HashidsRequestConverterAttribute;
+use Vipinbose\HashidsBundle\Interfaces\HashidsServiceInterface;
 use ReflectionClass;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Request;

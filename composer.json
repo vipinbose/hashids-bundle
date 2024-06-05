@@ -12,12 +12,12 @@
   ],
   "autoload": {
     "psr-4": {
-      "VipinBose\\HashidsBundle\\": "src/"
+      "Vipinbose\\HashidsBundle\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "spec\\VipinBose\\HashidsBundle\\": "spec/"
+      "spec\\Vipinbose\\HashidsBundle\\": "spec/"
     }
   },
   "require": {

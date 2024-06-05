@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace VipinBose\HashidsBundle\ValueResolver;
+namespace Vipinbose\HashidsBundle\ValueResolver;
 
 use Doctrine\ORM\Mapping\{
     Id,

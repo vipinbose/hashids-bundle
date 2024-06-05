@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace VipinBose\HashidsBundle\Attribute;
+namespace Vipinbose\HashidsBundle\Attribute;
 
 use Attribute;
 

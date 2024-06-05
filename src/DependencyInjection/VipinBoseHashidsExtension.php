@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace VipinBose\HashidsBundle\DependencyInjection;
+namespace Vipinbose\HashidsBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -10,7 +10,7 @@ use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\Yaml\Yaml;
 
-class VipinBoseHashidsExtension extends Extension
+class VipinboseHashidsExtension extends Extension
 {
     private const string DIR_CONFIG = '/../Resources/config';
     private const string DIR_CONFIG_PARAM = self::DIR_CONFIG . '/parameters.yaml';

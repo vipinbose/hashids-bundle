@@ -2,10 +2,10 @@
 
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use VipinBose\HashidsBundle\EventListener\KernelListener;
-use VipinBose\HashidsBundle\Interfaces\HashidsServiceInterface;
-use VipinBose\HashidsBundle\Service\HashidsService;
-use VipinBose\HashidsBundle\ValueResolver\HashIdValueResolver;
+use Vipinbose\HashidsBundle\EventListener\KernelListener;
+use Vipinbose\HashidsBundle\Interfaces\HashidsServiceInterface;
+use Vipinbose\HashidsBundle\Service\HashidsService;
+use Vipinbose\HashidsBundle\ValueResolver\HashIdValueResolver;
 
 return static function (ContainerConfigurator $container): void {
     $container->services()

@@ -2,7 +2,7 @@
 
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use VipinBose\HashidsBundle\Twig\HashidsExtension;
+use Vipinbose\HashidsBundle\Twig\HashidsExtension;
 
 return static function (ContainerConfigurator $container): void {
     $container->services()

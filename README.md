@@ -29,7 +29,7 @@ following line in the `config/bundles.php` file of your project:
 
 return [
     …,
-    VipinBose\HashidsBundle\VipinBoseHashidsBundle::class => ['all' => true],
+    Vipinbose\HashidsBundle\VipinboseHashidsBundle::class => ['all' => true],
 ];
 ```
 

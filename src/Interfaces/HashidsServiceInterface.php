@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace VipinBose\HashidsBundle\Interfaces;
+namespace Vipinbose\HashidsBundle\Interfaces;
 
 interface HashidsServiceInterface
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace VipinBose\HashidsBundle\Twig;
+namespace Vipinbose\HashidsBundle\Twig;
 
 use Hashids\HashidsInterface;
 use Twig\Extension\AbstractExtension;
