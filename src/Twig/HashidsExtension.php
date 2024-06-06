@@ -4,17 +4,15 @@ declare(strict_types=1);
 
 namespace Vipinbose\HashidsBundle\Twig;
 
-use Hashids\HashidsInterface;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
+use Vipinbose\HashidsBundle\Interfaces\HashidsServiceInterface;
 
 class HashidsExtension extends AbstractExtension
 {
-    private HashidsInterface $hashids;
 
-    public function __construct(HashidsInterface $hashids)
+    public function __construct(private HashidsServiceInterface $hashids)
     {
-        $this->hashids = $hashids;
     }
 
     public function getFilters(): array

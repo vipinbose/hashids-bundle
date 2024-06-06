@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Vipinbose\HashidsBundle\ValueResolver;
 
@@ -6,22 +8,21 @@ use Doctrine\ORM\Mapping\{
     Id,
     Entity
 };
-use Hashids\Hashids;
 use ReflectionClass;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Controller\ValueResolverInterface;
 use Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata;
 use Throwable;
+use Vipinbose\HashidsBundle\Interfaces\HashidsServiceInterface;
 
 class HashIdValueResolver implements ValueResolverInterface
 {
-    private Hashids $hasher;
 
     public function __construct(
         private bool $enable = true,
-        ) {
-        $this->hasher = new Hashids();
+        private HashidsServiceInterface $hasher
+    ) {
     }
 
     public function resolve(Request $request, ArgumentMetadata $argument): array
@@ -38,7 +39,7 @@ class HashIdValueResolver implements ValueResolverInterface
 
         try {
             $className = $argument->getType();
-            if(!$className){
+            if (!$className) {
                 return [];
             }
             $reflection = (new ReflectionClass($className));
@@ -52,7 +53,8 @@ class HashIdValueResolver implements ValueResolverInterface
                     }
                 }
             }
-        } catch (Throwable) {}
+        } catch (Throwable) {
+        }
 
         $mapEntity = $argument->getAttributes(MapEntity::class, ArgumentMetadata::IS_INSTANCEOF);
         /** @var MapEntity|null $mapEntity */
@@ -66,32 +68,18 @@ class HashIdValueResolver implements ValueResolverInterface
             $mappingAttributes[] = $argument->getName();
         }
 
-        $this->setHashid($request, $mappingAttributes);
+        /** @var string|null $hash */
+        $hash = $request->attributes->get("hashid");
+
+        $hash = (string) $hash;
+        $hashids = $this->hasher->decode($hash);
+        if ($this->hasHashidDecoded($hashids)) {
+            $request->attributes->set("id", current($hashids));
+        }
 
         return [];
     }
 
-    private function setHashid(Request $request, array $mappingIds): void
-    {
-        foreach ($mappingIds as $mappingId) {
-            if ($mappingId !== "id"){
-                continue;
-            }
-
-            /** @var string|null $hash */
-            $hash = $request->attributes->get($mappingId);
-            if ($hash === null) {
-                continue;
-            }
-
-            $hash = (string) $hash;
-            $hashids = $this->hasher->decode($hash);
-
-            if ($this->hasHashidDecoded($hashids)) {
-                $request->attributes->set($mappingId, current($hashids));
-            }
-        }
-    }
 
     private function hasHashidDecoded(mixed $hashids): bool
     {
