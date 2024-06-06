@@ -77,7 +77,7 @@ class VipinboseHashidsBundle extends AbstractBundle
     private function createParameters(ContainerBuilder $container, array $config): void
     {
         /** @var array $yamlParameter */
-        $yamlParameter =  Yaml::parseFile(__DIR__ . '../config/parameters.yaml');
+        $yamlParameter =  Yaml::parseFile(__DIR__ . '/../config/parameters.yaml');
         $parameters = $yamlParameter['hashids']['parameters'] ?? [];
 
         foreach ($parameters as $parameter) {
