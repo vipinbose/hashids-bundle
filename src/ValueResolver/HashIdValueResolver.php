@@ -20,8 +20,8 @@ class HashIdValueResolver implements ValueResolverInterface
 {
 
     public function __construct(
-        private bool $enable = true,
-        private HashidsServiceInterface $hasher
+        private HashidsServiceInterface $hasher,
+        private bool $enable = true
     ) {
     }
 
