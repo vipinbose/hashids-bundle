@@ -12,13 +12,13 @@ commands to download the latest stable version of this bundle:
 
 ```
     composer config extra.symfony.allow-contrib true
-    composer req roukmoute/hashids-bundle
+    composer req vipinbose/hashids-bundle
 ```
 
 ### Using Symfony Framework only
 
 ```
-    composer require roukmoute/hashids-bundle
+    composer require vipinbose/hashids-bundle
 ```
 
 If this has not been done automatically, enable the bundle by adding the 
@@ -35,10 +35,10 @@ return [
 
 ## Configuration
 
-The configuration (`config/packages/vipin_bose_hashids.yaml`) looks as follows :
+The configuration (`config/packages/vipinbose_hashids.yaml`) looks as follows :
 
 ```yaml
-vipin_bose_hashids:
+vipinbose_hashids:
 
     # if set, the hashids will differ from everyone else's
     salt:            ""
@@ -50,23 +50,20 @@ vipin_bose_hashids:
     # if set, will use only characters of alphabet string
     alphabet:        "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
 
-    # if set to true, it will continue with the next available param converters
-    passthrough:     false
-
     # if set to true, it tries to convert all arguments passed to the controller
-    auto_convert:    false
+    auto_convert:    true
 ```
 
 ## Usage
 
 ```php
 
-use Hashids\HashidsInterface;
+use Vipinbose\HashidsBundle\Interfaces\HashidsServiceInterface;
 
-public function postShow(HashidsInterface $hashids): Response
-{
-    $hashids->…
-}
+public function __construct(
+        private HashidsServiceInterface $hasher,
+    ) {
+    }
 ```
 
 Next it's the same things of [official documentation](https://hashids.org/php/).
@@ -78,86 +75,7 @@ Converter Name: `hashids.converter`
 The hashids converter attempts to convert any attribute set in the route into 
 an integer parameter.
 
-You could use `hashid` or `id`:
-
-```php
-/**
- * @Route("/users/{hashid}")
- */
-public function getAction(int $user)
-{
-}
-```
-
-or
-
-```php
-/**
- * @Route("/users/{id}")
- */
-public function getAction(int $user)
-{
-}
-```
-
-You could have several hashids in the same URL prefixed with  `_hash_`.
-
-```php
-/**
- * @Route("/users/{_hash_user}/status/{_hash_status}")
- */
-public function getAction(int $user, int $status)
-{
-}
-```
-
-The keys must be the same as in parameters controller:
-
-```php
-/**
- *                          _hash_user _hash_status
- *                                 ↕            ↕
- * public function getAction(int $user, int $status)
- */
-```
-
-You will receive a `LogicException` if a hash could not be decoded correctly.
-
-## Using auto_convert
-
-`auto_convert` tries to convert all arguments in controller.
-
-```yaml
-roukmoute_hashids:
-  auto_convert: true
-```
-
-Base on the example above:
-
-```php
-/**
- * @Route("/users/{user}/status/{status}")
- */
-public function getAction(int $user, int $status)
-{
-}
-```
-
-It will not be possible to get an exception of type `LogicException` from the 
-bundle if it is activated.
-
-## Using passthrough
-
-`passthrough` allows to continue with the next available param converters.  
-So if you would like to retrieve an object instead of an integer, just active 
-passthrough :
-
-```yaml
-roukmoute_hashids:
-    passthrough: true
-```
-
-Base on the example above:
+You should use `hashid`:
 
 ```php
 /**
@@ -167,10 +85,14 @@ public function getAction(User $user)
 {
 }
 ```
+## Using auto_convert
 
-As you can see, the passthrough feature allows to use `DoctrineParamConverter` 
-or any another `ParamConverterInterface` you would have created.
+`auto_convert` tries to convert all arguments in controller.
 
+```yaml
+vipinbose_hashids:
+  auto_convert: true
+```
 ## Twig Extension
 ### Usage
 
